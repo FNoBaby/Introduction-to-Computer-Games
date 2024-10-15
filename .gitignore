@@ -1,0 +1,68 @@
+# =============== #
+# Unity Generated #
+# =============== #
+
+# This folder contains Unity's internal metadata and caches.
+[Ll]ibrary/
+
+# Auto-generated temporary files.
+[Tt]emp/
+
+# Build results
+[Bb]uild/
+[Bb]uilds/
+[Bb]uilds/**/*.apk
+[Bb]uilds/**/*.app
+[Bb]uilds/**/*.exe
+[Bb]uilds/**/*.xcodeproj
+[Bb]uilds/**/*.msi
+
+# Package Manager files
+[Ll]ibrary/PackageCache/
+[Pp]ackages/
+
+# Logs
+[Ll]ogs/
+
+# Crashlytics files
+/Assets/Plugins/Android/Firebase/Crashlytics/
+
+# Unity Auto-generated files
+[Ll]ibrary/PlayerPrefs/*
+[Ll]ibrary/Editor/Logs/
+# User-specific files
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# =============== #
+# Visual Studio #
+# =============== #
+# User-specific files
+*.userprefs
+
+# Rider plugin
+.idea/
+
+# =============== #
+# OS Generated #
+# =============== #
+
+# macOS system files
+.DS_Store
+.DS_Store?
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# =============== #
+# Others to Ignore #
+# =============== #
+# Ignore any file or folder named "Temp"
+Temp/
