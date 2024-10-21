@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 4f;
     [SerializeField] float paddingX = 0.5f;
     [SerializeField] float paddingY = 1f;
+    [SerializeField] GameObject laserPrefab;
+    [SerializeField] float laserSpeed = 10f;
 
     Vector2 minBounds;
 
@@ -25,6 +27,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
+        Fire();
     }
 
     void Move()
@@ -50,5 +53,41 @@ public class Player : MonoBehaviour
 
         //Updating the position of the player
         transform.position = new Vector2(boundXPosition, boundYPosition);
+    }
+
+    void Fire()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
+        {
+            //Instantiate creates a new object
+            //The first parameter is the object to create
+            //The second parameter is the position of the object
+            //The third parameter is the rotation of the object
+            GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
+
+            //GetComponent allows us to access the component of the object
+            //Rigidbody2D is the component that allows the object to move
+            // Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
+
+            //AddForce applies a force to the object
+            //The first parameter is the direction of the force
+            //The second parameter is the amount of force
+            // rb.AddForce(Vector2.up * laserSpeed);
+
+            //The above code is the same as the code below
+            //The difference is that the code below is more efficient
+            //The code below does not require the object to have a Rigidbody2D component
+            //The code below moves the object using the transform component
+            //The code below moves the object using the position of the object
+            //The code below moves the object using the speed of the object
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0f , laserSpeed);
+
+            //Destroy destroys the object after a certain amount of time
+            //The first parameter is the object to destroy
+            //The second parameter is the time to wait before destroying the object
+            // if(laser.GetComponent<Rigidbody2D>().position.y > maxBounds.y || laser.GetComponent<Rigidbody2D>().position.y < minBounds.y){
+            //     Destroy(laser , 1f);
+            // }
+        }
     }
 }
