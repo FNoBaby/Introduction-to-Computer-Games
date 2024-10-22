@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,7 +11,9 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingY = 1f;
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float laserSpeed = 10f;
+    [SerializeField] float laserDelay = 0.5f;
 
+    IEnumerator firingCoroutine;
     Vector2 minBounds;
 
     Vector2 maxBounds;
@@ -56,8 +59,22 @@ public class Player : MonoBehaviour
     }
 
     void Fire()
-    {
+    {   
         if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
+        {
+            firingCoroutine = ConstantFire();
+            StartCoroutine(firingCoroutine);
+        }
+        
+        if (Input.GetKeyUp(KeyCode.Mouse0) || Input.GetKeyUp(KeyCode.Space))
+        {
+            StopCoroutine(firingCoroutine);
+        }
+    }
+
+    IEnumerator ConstantFire()
+    {
+        while (true)
         {
             //Instantiate creates a new object
             //The first parameter is the object to create
@@ -65,29 +82,18 @@ public class Player : MonoBehaviour
             //The third parameter is the rotation of the object
             GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
 
-            //GetComponent allows us to access the component of the object
-            //Rigidbody2D is the component that allows the object to move
-            // Rigidbody2D rb = laser.GetComponent<Rigidbody2D>();
-
-            //AddForce applies a force to the object
-            //The first parameter is the direction of the force
-            //The second parameter is the amount of force
-            // rb.AddForce(Vector2.up * laserSpeed);
-
             //The above code is the same as the code below
             //The difference is that the code below is more efficient
             //The code below does not require the object to have a Rigidbody2D component
             //The code below moves the object using the transform component
             //The code below moves the object using the position of the object
             //The code below moves the object using the speed of the object
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0f , laserSpeed);
+            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, laserSpeed);
 
-            //Destroy destroys the object after a certain amount of time
-            //The first parameter is the object to destroy
-            //The second parameter is the time to wait before destroying the object
-            // if(laser.GetComponent<Rigidbody2D>().position.y > maxBounds.y || laser.GetComponent<Rigidbody2D>().position.y < minBounds.y){
-            //     Destroy(laser , 1f);
-            // }
+            //WaitForSeconds waits for a certain amount of time
+            //The amount of time is the parameter of the function
+            yield return new WaitForSeconds(laserDelay);
         }
     }
+
 }

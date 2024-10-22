@@ -6,7 +6,9 @@ public class Player : MonoBehaviour
 {
     [SerializeField] float movementspeed = 5f;
     [SerializeField] float paddingX = 0.5f;
-    [SerializeField] float paddingY = 2f;
+    [SerializeField] float paddingYBottom = 2f;
+
+    [SerializeField] float paddingYTop = 25f;
 
     Vector2 minBounds;
     Vector2 maxBounds;
@@ -45,24 +47,7 @@ public class Player : MonoBehaviour
 
         //Clamp eunsure that the current X position of the player does not exceed Min and Max Bounds
         var boundXpos = Mathf.Clamp(newXposition, minBounds.x + paddingX, maxBounds.x - paddingX);
-        var boundYpos = Mathf.Clamp(newYposition, minBounds.y + paddingY, maxBounds.y - paddingY);
-
-        // Debug.Log(boundYpos);
-
-        if(boundYpos >= 3 || boundYpos <= -4){
-            Debug.Log("Crashed");
-        }
-
-        // switch (boundYpos)
-        // {
-        //     case -1:
-        //         Debug.LogError("Crahsed");
-        //     break;
-
-        //     case 1:
-        //         Debug.LogError("Crahsed");
-        //     break;
-        // }
+        var boundYpos = Mathf.Clamp(newYposition, minBounds.y + paddingYBottom, maxBounds.y - paddingYTop);
         //Padding is set to add extra space between the player and the border.
 
         //Provides the updated values to the Player's object.
