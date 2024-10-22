@@ -51,8 +51,6 @@ public class Player : MonoBehaviour
 
         if(boundYpos >= 3 || boundYpos <= -4){
             Debug.Log("Crashed");
-
-            if(boundYpos >= 3)
         }
 
         // switch (boundYpos)
