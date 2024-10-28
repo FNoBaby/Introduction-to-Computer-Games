@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBlueMovement : MonoBehaviour
 {
 
-    [SerializeField] float movementSpeed = 5f;
+    [SerializeField] float movementSpeed = 2.5f;
     [SerializeField] Transform pathPrefab;
     int index = 0;
 
