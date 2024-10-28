@@ -311,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954d5c20189e556469098211999b00a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  movementSpeed: 2.5
   pathPrefab: {fileID: 3039327597925035628, guid: f0deb75fbe5864b489c0eba36c9c98b1, type: 3}
 --- !u!1 &920110513
 GameObject:

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyConfig
   m_EditorClassIdentifier: 
   movementSpeed: 2.5
-  pathPrefab: {fileID: 0}
+  pathPrefab: {fileID: 1178676128957883240, guid: ff96f8a9b84b4d44c88f30b344000bd1, type: 3}
