@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] float movementSpeed = 2.5f;
-    [SerializeField] Transform pathPrefab;
+    [SerializeField] EnemyConfig enemyConfigFile;
     int index = 0;
 
     List<Transform> waypoints = new List<Transform>();
@@ -13,10 +12,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        foreach (Transform child in pathPrefab)
-        {
-            waypoints.Add(child);
-        }
+        waypoints = enemyConfigFile.waypoints();
 
         transform.position = waypoints[index].transform.position;
     }
@@ -30,11 +26,11 @@ public class EnemyMovement : MonoBehaviour
     private void FollowPath()
     {
         if (index <= waypoints.Count - 1)
-        {   
+        {
             //targetPosition is the position of the next waypoint
             var targetPosition = waypoints[index].transform.position;
             //movementThisFrame is the distance the enemy will move this frame
-            var movementThisFrame = movementSpeed * Time.deltaTime;
+            var movementThisFrame = enemyConfigFile.GetMovementSpeed() * Time.deltaTime;
 
             //MoveTowards moves the enemy towards the targetPosition by movementThisFrame
             //If the enemy is already at the targetPosition, index is incremented to move to the next waypoint

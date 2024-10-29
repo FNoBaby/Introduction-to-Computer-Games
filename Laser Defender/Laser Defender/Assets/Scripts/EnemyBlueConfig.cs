@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy Config")]
-public class EnemyConfig : ScriptableObject
+[CreateAssetMenu(menuName = "Enemy Blue Config")]
+public class EnemyBlueConfig : ScriptableObject
 {
     [SerializeField] float movementSpeed = 2.5f;
     [SerializeField] Transform pathPrefab;
     [SerializeField] GameObject enemyPrefab;
-    [SerializeField] int nosOfEnemies = 4;
-    [SerializeField] float enemySpawnDelay = 1f;
+    [SerializeField] int nosOfEnemies = 2;
+    [SerializeField] float enemySpawnDelay = 2f;
+
 
     public float GetMovementSpeed()
     {
@@ -35,7 +36,6 @@ public class EnemyConfig : ScriptableObject
     {
         this.pathPrefab = pathPrefab;
     }
-
     public GameObject GetEnemyPrefab()
     {
         return enemyPrefab;
