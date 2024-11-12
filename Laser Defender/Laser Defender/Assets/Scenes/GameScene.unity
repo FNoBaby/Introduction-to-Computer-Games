@@ -548,8 +548,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e63798b22db4e4741836ce9f96f4a45d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyConfig: {fileID: 11400000, guid: cbdea086d35a4354691ed9ce00ef0b42, type: 2}
-  enemyBlueConfig: {fileID: 11400000, guid: 948c505a572456840985a7132ce34361, type: 2}
+  enemyConfigList:
+  - {fileID: 11400000, guid: afc784f468eb41948adcb6b85e42954a, type: 2}
+  - {fileID: 11400000, guid: cbdea086d35a4354691ed9ce00ef0b42, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] EnemyConfig enemyConfig;
-
-    [SerializeField] EnemyBlueConfig enemyBlueConfig;
+    //List of enemy configurations
+    [SerializeField] List<EnemyConfig> enemyConfigList;
 
     // Start is called before the first frame update
     void Start()
@@ -17,16 +16,17 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        for (int i = 0; i < enemyConfig.GetNosOfEnemies(); i++)
+        foreach(EnemyConfig enemyConfig in enemyConfigList)
         {
-            Instantiate(enemyConfig.GetEnemyPrefab(), enemyConfig.waypoints()[0].transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(enemyConfig.GetEnemySpawnDelay());
-        }
+            yield return new WaitForSeconds(2f);
 
-        for (int i = 0; i < enemyBlueConfig.GetNosOfEnemies(); i++)
-        {
-            Instantiate(enemyBlueConfig.GetEnemyPrefab(), enemyBlueConfig.waypoints()[0].transform.position, Quaternion.identity);
-            yield return new WaitForSeconds(enemyBlueConfig.GetEnemySpawnDelay());
+            for (int i = 0; i < enemyConfig.GetNosOfEnemies(); i++)
+            {
+                var newEnemy = Instantiate(enemyConfig.GetEnemyPrefab(), enemyConfig.waypoints()[0].transform.position, Quaternion.identity);
+                newEnemy.GetComponent<EnemyMovement>().setWaveConfig(enemyConfig);
+                yield return new WaitForSeconds(enemyConfig.GetEnemySpawnDelay());
+            }
+
         }
 
     }

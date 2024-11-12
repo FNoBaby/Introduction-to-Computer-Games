@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6302be7788dc840a489a8d03c6cb04, type: 3}
-  m_Name: EnemyBlueConfig
+  m_Script: {fileID: 11500000, guid: 47363aee4ea3eda4c8cc2fd44a6488dc, type: 3}
+  m_Name: EnemyConfig - Green
   m_EditorClassIdentifier: 
   movementSpeed: 2.5
   pathPrefab: {fileID: 3039327597925035628, guid: f0deb75fbe5864b489c0eba36c9c98b1, type: 3}
   enemyPrefab: {fileID: 4553593522242071532, guid: 163b5a430bad41943938172bcf8ce08a, type: 3}
+  nosOfEnemies: 2
+  enemySpawnDelay: 2

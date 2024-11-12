@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] EnemyConfig enemyConfigFile;
+    EnemyConfig enemyConfigFile;
     int index = 0;
 
     List<Transform> waypoints = new List<Transform>();
+
+    public void setWaveConfig(EnemyConfig enemyConfigFile)
+    {
+        this.enemyConfigFile = enemyConfigFile;
+    }
 
     // Start is called before the first frame update
     void Start()
