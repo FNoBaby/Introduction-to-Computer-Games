@@ -66,3 +66,4 @@ Desktop.ini
 # =============== #
 # Ignore any file or folder named "Temp"
 Temp/
+*.7z
