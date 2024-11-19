@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    //List of enemy configurations
+    [SerializeField] Boolean looping = false;
     [SerializeField] List<EnemyConfig> enemyConfigList;
 
     // Start is called before the first frame update
@@ -16,18 +17,20 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        foreach(EnemyConfig enemyConfig in enemyConfigList)
+        do
         {
-            yield return new WaitForSeconds(2f);
-
-            for (int i = 0; i < enemyConfig.GetNosOfEnemies(); i++)
+            foreach (EnemyConfig enemyConfig in enemyConfigList)
             {
-                var newEnemy = Instantiate(enemyConfig.GetEnemyPrefab(), enemyConfig.waypoints()[0].transform.position, Quaternion.identity);
-                newEnemy.GetComponent<EnemyMovement>().setWaveConfig(enemyConfig);
-                yield return new WaitForSeconds(enemyConfig.GetEnemySpawnDelay());
+                yield return new WaitForSeconds(2f);
+
+                for (int i = 0; i < enemyConfig.GetNosOfEnemies(); i++)
+                {
+                    var newEnemy = Instantiate(enemyConfig.GetEnemyPrefab(), enemyConfig.waypoints()[0].transform.position, Quaternion.identity);
+                    newEnemy.GetComponent<EnemyMovement>().setWaveConfig(enemyConfig);
+                    yield return new WaitForSeconds(enemyConfig.GetEnemySpawnDelay());
+                }
+
             }
-
-        }
-
+        } while (looping);
     }
 }

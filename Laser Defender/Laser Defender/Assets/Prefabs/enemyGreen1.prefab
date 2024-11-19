@@ -207,3 +207,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  explosionPrefab: {fileID: 3508866154983680314, guid: 94b18c07f393aec4686b442516c1c05d, type: 3}
