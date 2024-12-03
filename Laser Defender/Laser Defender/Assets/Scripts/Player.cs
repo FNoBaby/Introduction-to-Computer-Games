@@ -13,6 +13,10 @@ public class Player : MonoBehaviour
     [SerializeField] float laserSpeed = 10f;
     [SerializeField] float laserDelay = 0.5f;
 
+    [SerializeField] [Range(0, 1)] float shootingLaserVolume = 0.5f;
+
+    [SerializeField] AudioClip shootingLaserSound;
+
     IEnumerator firingCoroutine;
     Vector2 minBounds;
 
@@ -90,9 +94,12 @@ public class Player : MonoBehaviour
             //The code below moves the object using the speed of the object
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, laserSpeed);
 
+            AudioSource.PlayClipAtPoint(shootingLaserSound, Camera.main.transform.position, shootingLaserVolume);
+
             //WaitForSeconds waits for a certain amount of time
             //The amount of time is the parameter of the function
             yield return new WaitForSeconds(laserDelay);
+
         }
     }
 

@@ -9,6 +9,8 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] float shotTimer;
     [SerializeField] float minShotTime = 1f;
     [SerializeField] float maxShotTime = 3f;
+    [SerializeField][Range(0, 1)] float shootingLaserVolume = 0.5f;
+    [SerializeField] AudioClip shootingLaserSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class EnemyShooting : MonoBehaviour
             rb.velocity = new Vector2(0, -enemyLaserSpeed);
             shotTimer = Random.Range(minShotTime, maxShotTime);
             enemyLaser.transform.Rotate(0, 0, 180);
+            AudioSource.PlayClipAtPoint(shootingLaserSound, Camera.main.transform.position, shootingLaserVolume);
         }
     }
 }

@@ -117,6 +117,8 @@ MonoBehaviour:
   shotTimer: 0
   minShotTime: 1
   maxShotTime: 3
+  shootingLaserVolume: 0.5
+  shootingLaserSound: {fileID: 8300000, guid: 950e95ff1e276dc428f24c71e847f22a, type: 3}
 --- !u!60 &8994407844268642882
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -199,5 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5fd07261523ab041be8f2fc02f330f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1
   explosionPrefab: {fileID: 3508866154983680314, guid: 94b18c07f393aec4686b442516c1c05d, type: 3}
+  deathSoundVolume: 0.25
+  deathSound: {fileID: 8300000, guid: 8a6cf18690a77d34f9169e099c582560, type: 3}
