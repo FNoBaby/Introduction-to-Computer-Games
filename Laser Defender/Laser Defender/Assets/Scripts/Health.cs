@@ -9,12 +9,15 @@ public class Health : MonoBehaviour
 
     [SerializeField] GameObject explosionPrefab;
 
-    [SerializeField] [Range(0, 1)] float deathSoundVolume = 0.5f;
+    [SerializeField][Range(0, 1)] float deathSoundVolume = 0.5f;
 
     [SerializeField] AudioClip deathSound;
 
+    [SerializeField] int scoreValue = 50;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         health -= other.GetComponent<DamageDealer>().GetDamage();
 
         other.GetComponent<DamageDealer>().GotHit();
@@ -33,7 +36,16 @@ public class Health : MonoBehaviour
             {
                 FindObjectOfType<Level>().LoadGameOver();
             }
+            else
+            {
+                FindObjectOfType<GameSession>().AddToScore(scoreValue);
+            }
         }
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 
 }
